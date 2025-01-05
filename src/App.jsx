@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
-import Projects from './components/projects';
+import Projects from './components/Projects';
 import Footer from './components/Footer';
 import ContactMe from './components/ContactMe';
 
