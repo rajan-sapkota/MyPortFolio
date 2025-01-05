@@ -36,9 +36,7 @@ const Home = () => {
                     My dedication to learning and growth ensures that I stay ahead in this dynamic field.
                 </p>
                 
-                <p className="text-lg animate__animated animate__fadeIn animate__delay-5s">
-                    Let’s connect and build something extraordinary together!
-                </p>
+                
             </div>
         </div>
     );
