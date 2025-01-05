@@ -1,0 +1,8 @@
+
+html {
+  scroll-behavior: smooth;
+}
+
+a[href^="#"] {
+  scroll-margin-top: 5rem; /* Adjust to match your Navbar's height */
+}
