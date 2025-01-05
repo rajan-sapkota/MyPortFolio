@@ -6,3 +6,12 @@ html {
 a[href^="#"] {
   scroll-margin-top: 5rem; /* Adjust to match your Navbar's height */
 }
+
+/* Add this to your CSS */
+#home:focus,
+#about:focus,
+#projects:focus,
+#contact:focus {
+  outline: 2px solid #4CAF50; /* Example of focus styling */
+  outline-offset: 2px;
+}

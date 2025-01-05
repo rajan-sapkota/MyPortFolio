@@ -15,9 +15,20 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
   const handleScroll = (event, href) => {
     event.preventDefault();
     const target = document.querySelector(href);
+    const headerHeight = document.querySelector('nav').offsetHeight; // Get the height of the nav bar
+
     if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setIsMobileMenuOpen(false); // Close mobile menu after clicking
+      // Scroll to the target element with an offset for the navbar height
+      window.scrollTo({
+        top: target.offsetTop - headerHeight,
+        behavior: 'smooth', // Smooth scroll effect
+      });
+
+      // Focus on the target element (for focus handling in the menu)
+      target.focus({ preventScroll: true });
+
+      // Close the mobile menu if open
+      setIsMobileMenuOpen(false);
     }
   };
 
@@ -25,20 +36,32 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
   useEffect(() => {
     const handleScrollEvent = () => {
       const sections = ['home', 'about', 'projects', 'contact'];
+      let currentVisibleSection = '';
+
       for (let section of sections) {
         const element = document.querySelector(`#${section}`);
-        if (element && element.getBoundingClientRect().top <= 0) {
-          setCurrentSection(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // Check if the section is in view (greater than -100px from top, still visible)
+          if (rect.top <= window.innerHeight / 2 && rect.bottom >= 0) {
+            currentVisibleSection = section;
+          }
         }
+      }
+
+      if (currentVisibleSection !== currentSection) {
+        setCurrentSection(currentVisibleSection);
       }
     };
 
     window.addEventListener('scroll', handleScrollEvent);
+    window.addEventListener('resize', handleScrollEvent); // Handle resize for better responsiveness
 
     return () => {
       window.removeEventListener('scroll', handleScrollEvent);
+      window.removeEventListener('resize', handleScrollEvent);
     };
-  }, []);
+  }, [currentSection]);
 
   return (
     <nav
@@ -150,7 +173,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
 };
 
 const navigation = [
-  { name: 'Home', href: '#home', id: 'home' },
+  { name: 'Home', href: '#top', id: 'home' },
   { name: 'About', href: '#about', id: 'about' },
   { name: 'Projects', href: '#projects', id: 'projects' },
   { name: 'Contact', href: '#contact', id: 'contact' },

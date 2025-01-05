@@ -27,10 +27,9 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+<div id="top">
       {/* Navbar Component */}
       <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
-      
       {/* Sections */}
       <div id="home">
         <Home />
