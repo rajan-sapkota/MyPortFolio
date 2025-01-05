@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
+import { FaFacebook, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
+
 
 const ContactMe = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +12,8 @@ const ContactMe = () => {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isError, setIsError] = useState(false);
+
+  const [isSending, setIsSending] = useState(false); // To show sending status
 
   // Handle form input changes
   const handleChange = (e) => {
@@ -29,14 +34,37 @@ const ContactMe = () => {
       return;
     }
 
-    // Simulating a successful form submission (for now)
-    setIsSubmitted(true);
     setIsError(false);
-    setFormData({
-      name: '',
-      email: '',
-      message: '',
-    });
+    setIsSending(true); // Show loading status
+
+    // Sending email via EmailJS
+    emailjs
+      .send(
+        'sendmeAnemail21', // Replace with your EmailJS service ID
+        'template_varuw0w', // Replace with your EmailJS template ID
+        {
+          user_name: formData.name,
+          user_email: formData.email,
+          message: formData.message,
+        },
+        '2tE8iZLveUXxrJwos' // Replace with your EmailJS public key
+      )
+      .then(
+        () => {
+          setIsSubmitted(true);
+          setIsSending(false);
+          setFormData({
+            name: '',
+            email: '',
+            message: '',
+          });
+        },
+        (error) => {
+          console.error('Failed to send message:', error.text);
+          setIsSending(false);
+          setIsError(true);
+        }
+      );
   };
 
   return (
@@ -50,7 +78,7 @@ const ContactMe = () => {
         )}
         {isError && (
           <div className="mb-4 text-red-500 text-center">
-            <p>Please fill in all the fields.</p>
+            <p>Failed to send message. Please try again.</p>
           </div>
         )}
         <form onSubmit={handleSubmit}>
@@ -105,12 +133,47 @@ const ContactMe = () => {
           <div className="text-center">
             <button
               type="submit"
-              className="w-full py-3 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
+              className={`w-full py-3 font-semibold rounded-md focus:outline-none focus:ring-2 transition-all duration-300 ${
+                isSending
+                  ? 'bg-gray-500 text-gray-300 cursor-not-allowed'
+                  : 'bg-blue-500 text-white hover:bg-blue-600 focus:ring-blue-500'
+              }`}
+              disabled={isSending}
             >
-              Send Message
+              {isSending ? 'Sending...' : 'Send Message'}
             </button>
           </div>
         </form>
+         {/* Social Media Links */}
+         <div className="mt-6 text-center">
+          <h3 className="text-lg font-semibold mb-4">Connect with Me</h3>
+          <div className="flex justify-center gap-6 text-2xl">
+            <a
+              href="https://www.linkedin.com/in/YOUR_LINKEDIN_PROFILE"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-700 hover:text-blue-800"
+            >
+              <FaLinkedin />
+            </a>
+            <a
+              href="https://www.facebook.com/YOUR_FACEBOOK_PROFILE"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:text-blue-700"
+            >
+              <FaFacebook />
+            </a>
+            <a
+              href="https://wa.me/YOUR_PHONE_NUMBER"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-500 hover:text-green-600"
+            >
+              <FaWhatsapp />
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   );
