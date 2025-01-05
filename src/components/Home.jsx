@@ -1,5 +1,5 @@
 import React from 'react';
-import photo from '../assets/rajan.png'; // Import your image
+import photo from '../assets/nsaevents.png'; // Import your image
 
 const Home = () => {
     return (

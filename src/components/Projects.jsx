@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import Slider from "react-slick";
-import yelpcampimg from "../assets/yelpcamp.png";
+import yelpcampimg from "../assets/nsaevents.png";
 import nsaevents from "../assets/nsaevents.png";
-import weatherapp from "../assets/weatherapp.png";
+import weatherapp from "../assets/nsaevents.png";
 
 // Sample Project Data
 const projects = [
