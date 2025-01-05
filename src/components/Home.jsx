@@ -31,10 +31,6 @@ const Home = () => {
                     With a strong passion for software development, I specialize in creating modern, user-friendly web applications.
                 </p>
                 
-                <p className="text-lg mb-4 animate__animated animate__fadeIn animate__delay-4s">
-                    Beyond coding, I thrive on exploring cutting-edge technologies, solving challenging problems, and collaborating on innovative projects. 
-                    My dedication to learning and growth ensures that I stay ahead in this dynamic field.
-                </p>
                 
                 
             </div>

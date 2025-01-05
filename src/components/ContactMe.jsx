@@ -149,7 +149,7 @@ const ContactMe = () => {
           <h3 className="text-lg font-semibold mb-4">Connect with Me</h3>
           <div className="flex justify-center gap-6 text-2xl">
             <a
-              href="https://www.linkedin.com/in/YOUR_LINKEDIN_PROFILE"
+              href="https://www.linkedin.com/in/rajan-sapkota/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-700 hover:text-blue-800"
@@ -157,7 +157,7 @@ const ContactMe = () => {
               <FaLinkedin />
             </a>
             <a
-              href="https://www.facebook.com/YOUR_FACEBOOK_PROFILE"
+              href="https://www.facebook.com/profile.php?id=100004750637024"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:text-blue-700"
@@ -165,7 +165,7 @@ const ContactMe = () => {
               <FaFacebook />
             </a>
             <a
-              href="https://wa.me/YOUR_PHONE_NUMBER"
+              href="https://wa.me/3185579521"
               target="_blank"
               rel="noopener noreferrer"
               className="text-green-500 hover:text-green-600"
