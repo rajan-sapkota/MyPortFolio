@@ -87,7 +87,7 @@ const Projects = React.forwardRef((props, ref) => {
   return (
     <div
       ref={ref}
-      className="project-card bg-gray-200 dark:bg-gray-800 shadow-lg rounded-lg p-4 flex flex-col items-center justify-center w-full h-screen"    >
+      className="project-card bg-gray-200 dark:bg-gray-800 shadow-lg rounded-lg p-4 flex flex-col items-center justify-center w-full min-h-screen"    >
       <div className="flex flex-col items-center justify-center h-full w-full gap-y-8">
         {/* Heading for "My Projects" */}
         <h2 className="text-3xl font-semibold text-gray-800 dark:text-white">

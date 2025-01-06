@@ -4,7 +4,7 @@ import 'animate.css'; // Import animate.css for animations
 
 const Home = () => {
     return (
-        <div className="flex items-center justify-center h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white transition-all duration-300">
+        <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white transition-all duration-300">
             <div className="flex flex-col items-center justify-center p-6 max-w-4xl text-center">
                 {/* Image Section */}
                 <div className="mb-6">
