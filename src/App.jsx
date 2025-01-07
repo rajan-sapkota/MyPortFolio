@@ -4,7 +4,7 @@ import Home from './components/Home';
 import Projects from './components/Projects';
 import Footer from './components/Footer';
 import ContactMe from './components/ContactMe';
-
+import Design from './components/Design';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -28,6 +28,7 @@ function App() {
 
   return (
 <div id="top">
+      
       {/* Navbar Component */}
       <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       {/* Sections */}
@@ -43,6 +44,7 @@ function App() {
       
       {/* Footer */}
       <Footer isDarkMode={isDarkMode} />
+      <Design isDarkMode={isDarkMode} />
     </div>
   );
 }
